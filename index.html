@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="https://resource.ninjamustdie3.pandadastudio.com/LandingPage/js/flexible.js"></script>
+    <script src="https://cdn.dingxiang-inc.com/ctu-group/captcha-ui/index.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script>
+        function onBridgeReady() {
+            WeixinJSBridge.call('hideOptionMenu');
+        }
+
+        if (typeof WeixinJSBridge == "undefined") {
+            if (document.addEventListener) {
+                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+            } else if (document.attachEvent) {
+                document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+            }
+        } else {
+            onBridgeReady();
+        }
+    </script>
+    <title>礼包码兑换</title>
+</head>
+<style>
+    @font-face {
+        font-family: myFont;
+        src: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/fzys_big.TTF);
+    }
+
+    ::-webkit-input-placeholder {
+        /* WebKit browsers */
+        color: #999;
+        font-size: 11px;
+    }
+
+    ::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: #999;
+        font-size: 11px;
+    }
+
+    :-ms-input-placeholder {
+        /* Internet Explorer 10+ */
+        color: #999;
+        font-size: 11px;
+    }
+
+    body {
+        font-family: myFont, Microsoft YaHei, SimSun, sans-serif;
+    }
+
+    p,
+    input,
+    div {
+        box-sizing: border-box;
+    }
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+
+    input {
+        height: auto;
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .main {
+        width: 100%;
+        height: 100vh;
+        background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/bg.png) center/cover;
+    }
+
+    .logo {
+        position: absolute;
+        top: 20px;
+        left: 40px;
+    }
+
+    .mp {
+        width: 940px;
+        padding-top: 180px;
+        margin: auto;
+    }
+
+    .mw {
+        float: left;
+        width: 620px;
+    }
+
+    .title {
+        background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/title.png) left/contain no-repeat;
+        height: 70px;
+    }
+
+    .input-row {
+        height: 47px;
+        position: relative;
+        clear: both;
+        margin: 8px 0;
+    }
+
+    .input-group {
+        display: flex;
+        -moz-display: flex;
+        -webkit-display: flex;
+        -ms-display: flex;
+        float: right;
+        height: 100%;
+        width: 375px;
+    }
+
+    .input-label-uid {
+        float: left;
+        width: 240px;
+        height: 100%;
+    }
+
+    .input-label {
+        float: left;
+        width: 240px;
+        height: 100%;
+    }
+
+    .input-icon {
+        width: 60px;
+        height: 100%;
+        border: 3px solid #58211a;
+        border-right: none;
+        border-radius: 11px 0 0 11px;
+    }
+
+    .input-icon>div {
+        height: 100%;
+        border-right: 2px solid #cfc0be;
+    }
+
+    .input-area {
+        padding-left: 0.1rem;
+        flex-grow: 1;
+        height: 100%;
+        background: #ffffff;
+        outline: none;
+        font-size: 22px;
+        border: 3px solid #58211a;
+        border-radius: 0 11px 11px 0;
+        border-left: none;
+        color: #58211a;
+    }
+
+    .input-uid .input-label-uid {
+        background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/uid.png) left/contain no-repeat;
+    }
+
+    .input-uid .input-icon {
+        background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/uid_icon.png) #fff center/40px 25px no-repeat;
+    }
+
+    .input-code .input-label {
+        background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/code.png) left/contain no-repeat;
+    }
+
+    .input-code .input-icon {
+        background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/code_icon.png) #fff center/40px 25px no-repeat;
+    }
+
+    .uid-tip {
+        font-size: 17px;
+        color: rgb(250, 240, 238);
+        padding-left: 3px;
+    }
+
+    .button-row {
+        display: flex;
+        -moz-display: flex;
+        -webkit-display: flex;
+        -ms-display: flex;
+        align-items: center;
+    }
+
+    .info {
+        flex-grow: 1;
+        padding: 25px 0;
+        font-size: 22px;
+        color: #58211a;
+    }
+
+    .info>p:first-child {
+        padding-bottom: 10px;
+    }
+
+    .info span {
+        color: #fff;
+        padding-left: 5px;
+    }
+
+    .submit {
+        width: 180px;
+        height: 55px;
+        background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/submit.png) center/100% 100% no-repeat;
+        cursor: pointer;
+    }
+
+    .line {
+        height: 16px;
+        background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/line.png) center no-repeat;
+    }
+
+    .tips {
+        color: #58211a;
+        padding-top: 10px;
+        font-size: 15px;
+    }
+
+    .tip {
+        display: flex;
+        -moz-display: flex;
+        -webkit-display: flex;
+        -ms-display: flex;
+        align-items: center;
+        padding-bottom: 6px;
+    }
+
+    .tip p {
+        width: 100%;
+    }
+
+    .dart {
+        width: 24px;
+        height: 24px;
+        background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/dart.png) top/contain no-repeat;
+        margin-right: 5px;
+    }
+
+    .QQ {
+        color: #d85242;
+    }
+
+    .download-group {
+        padding-top: 25px;
+    }
+
+    .bar-code {
+        display: inline-block;
+        float: left;
+        width: 130px;
+        height: 100px;
+        background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/qr_code.png) center/ 100% 100% no-repeat;
+    }
+
+    .download-button {
+        display: inline-block;
+        width: 200px;
+        height: 100px;
+        padding-left: 10px;
+    }
+
+    .android {
+        height: 46px;
+        background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/android.png) center/ 100% 100% no-repeat;
+    }
+
+    .ios {
+        height: 46px;
+        background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/ios.png) top/contain no-repeat;
+        margin-bottom: 8px;
+    }
+
+    .layer {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .cw {
+        padding-top: 250px;
+        width: 940px;
+        margin: auto;
+    }
+
+    .tip-window {
+        z-index: 2;
+        position: relative;
+        float: left;
+        width: 500px;
+        height: 370px;
+        background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/tip_window.png) center/100% 100% no-repeat;
+    }
+
+    #tip-msg {
+        width: 100%;
+        font-size: 25px;
+        line-height: 40px;
+        position: absolute;
+        top: 100px;
+        text-align: center;
+        color: #f5fafc;
+        padding: 0 20px;
+    }
+
+    .tip-button {
+        position: absolute;
+        bottom: 50px;
+        width: 100%;
+    }
+
+    .confirm {
+        height: 70px;
+        width: 230px;
+        margin: auto;
+        background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/confirm.png) center/100% 100% no-repeat;
+    }
+
+    .cover {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6)
+    }
+
+    @media screen and (max-width: 640px) {
+        .cover {
+            height: 25.8rem;
+        }
+
+        .main {
+            height: 25.8rem;
+            background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/m_bg.png) top/cover;
+        }
+
+        .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2.43rem;
+        }
+
+        .mp {
+            position: absolute;
+            width: 9.48rem;
+            padding-top: 0;
+            margin-left: 0.26rem;
+            top: 11.72rem;
+        }
+
+        .mw {
+            float: none;
+            position: relative;
+            width: 100%;
+            height: 14rem;
+            background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/m_code_bg.png) top / contain no-repeat;
+            padding: 0 0.40rem;
+        }
+
+        .title {
+            background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/m_title.png) left/contain no-repeat;
+            height: 1.33rem;
+            transform: translateY(-40%);
+            position: absolute;
+            width: calc(100% - 0.8rem);
+        }
+
+        .insert {
+            padding-top: 0.8rem;
+        }
+
+        .input-row {
+            height: 0.93rem;
+            position: relative;
+            clear: both;
+            margin: 0.13rem 0;
+        }
+
+        .input-group {
+            display: flex;
+            -moz-display: flex;
+            -webkit-display: flex;
+            -ms-display: flex;
+            float: right;
+            height: 100%;
+            width: 6.07rem;
+            margin-right: 0.3rem;
+        }
+
+        .input-label-uid {
+            float: left;
+            width: 2.31rem;
+            height: 100%;
+        }
+
+        .input-label {
+            float: left;
+            width: 1.76rem;
+            height: 100%;
+        }
+
+        .input-icon {
+            flex-shrink: 0;
+            width: 1.07rem;
+            height: 100%;
+            border: 2px solid #162034;
+            border-right: none;
+            border-radius: 0.25rem 0 0 0.25rem
+        }
+
+        .input-icon>div {
+            height: 100%;
+            border-right: 2px solid #d5d9e0;
+        }
+
+        .input-area {
+            width: 5.0rem;
+            height: 100%;
+            background: #ffffff;
+            outline: none;
+            font-size: 0.54rem;
+            border: 2px solid #162034;
+            border-radius: 0 0.25rem 0.25rem 0;
+            border-left: none;
+            color: #162034;
+        }
+
+        .input-uid .input-label-uid {
+            background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/m_uid.png) left/contain no-repeat;
+        }
+
+        .input-uid .input-icon {
+            background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/m_uid_icon.png) #fff center/0.75rem 0.47rem no-repeat;
+        }
+
+        .input-code .input-label {
+            background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/m_code.png) left/contain no-repeat;
+        }
+
+        .input-code .input-icon {
+            background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/m_code_icon.png) #fff center/0.75rem 0.47rem no-repeat;
+        }
+
+        .uid-tip {
+            font-size: 0.31rem;
+            padding: 0;
+        }
+
+        .button-row {
+            display: initial;
+            align-items: center;
+        }
+
+        .info {
+            padding: 0.27rem 0;
+            font-size: 0.47rem;
+            color: #162034;
+        }
+
+        .info>p:first-child {
+            padding-bottom: 0.27rem;
+        }
+
+        .info span {
+            color: #fff;
+            padding-left: 0.067rem;
+        }
+
+        .submit {
+            width: 5.2rem;
+            height: 1.19rem;
+            background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/m_submit.png) center/100% 100% no-repeat;
+            cursor: pointer;
+            margin: auto;
+            margin-top: 0.2rem;
+        }
+
+        .line {
+            height: 0.21rem;
+            background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/m_line.png) center/contain no-repeat;
+            padding: 0.24rem 0;
+        }
+
+        .tips {
+            color: #162034;
+            font-size: 0.32rem;
+            padding: 0;
+        }
+
+        .tip {
+            display: flex;
+            -moz-display: flex;
+            -webkit-display: flex;
+            -ms-display: flex;
+            align-items: start;
+            line-height: 0.48rem;
+            padding: 0;
+        }
+
+        .dart {
+            width: 0.4rem;
+            height: 0.4rem;
+            background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/m_dart.png) top/contain no-repeat;
+            margin-right: 0.13rem;
+            margin-top: 0.05rem;
+        }
+
+        .download-group {
+            width: 6.53rem;
+            margin: auto;
+            padding-top: 0.15rem;
+        }
+
+        .bar-code {
+            display: inline-block;
+            float: left;
+            width: 2.6rem;
+            height: 2.1rem;
+            background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/m_qr_code.png) center/ 100% 100% no-repeat;
+        }
+
+        .download-button {
+            display: inline-block;
+            width: 3.87rem;
+            height: 2.1rem;
+            padding-left: 0.4rem;
+        }
+
+        .android {
+            height: 0.93rem;
+            background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/m_android.png) center/ 100% 100% no-repeat;
+        }
+
+        .ios {
+            height: 0.93rem;
+            background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/m_ios.png) center/ 100% 100% no-repeat;
+            margin-bottom: 0.24rem;
+        }
+
+        .cw {
+            padding-top: 8.33rem;
+            width: 6.33rem;
+        }
+
+        .tip-window {
+            float: none;
+            width: 100%;
+            height: 8.13rem;
+            background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/m_tip_window.png) center/100% 100% no-repeat;
+        }
+
+        #tip-msg {
+            position: absolute;
+            font-size: 0.4rem;
+            line-height: 0.53rem;
+            top: 1.93rem;
+        }
+
+        .tip-button {
+            bottom: 0.8rem;
+        }
+
+        .confirm {
+            height: 1.15rem;
+            width: 3.47rem;
+            margin: auto;
+            background: url(https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/m_confirm.png) center/100% 100% no-repeat;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+
+        }
+    }
+</style>
+<!--<script>-->
+<!--    $(function () {-->
+<!--        var height = window.innerWidth;-->
+<!--        if (window.innerWidth > window.innerHeight) {-->
+<!--            $('.mw').css('float', 'right').css('width', '33%').css('margin-right', '7%');-->
+<!--            height = window.innerHeight;-->
+<!--        } else {-->
+<!--            $('.mw').css('position', 'absolute').css('width', '80%').css('top', '20%').css('margin', '0 10%');-->
+<!--        }-->
+<!--        if (window.innerWidth > 960) {-->
+<!--            $('.mw').height(700);-->
+<!--        } else {-->
+<!--            $('.mw').height(height);-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<body>
+    <div class="main">
+        <img class="logo" src="https://resource.ninjamustdie3.pandadastudio.com/web/giftCode1111/logo.png" alt="">
+        <div class="mp">
+            <div class="mw">
+                <div class="title"></div>
+                <div class="insert"></div>
+                <div class="input-row input-uid">
+                    <div class="input-label-uid"></div>
+                    <div class="input-group">
+                        <div class="input-icon">
+                            <div></div>
+                        </div>
+                        <input id="uid" class="input-area" title="uid" placeholder="请输入数字ID" />
+                    </div>
+                </div>
+                <div class="input-row input-code">
+                    <div class="input-label"></div>
+                    <div class="input-group">
+                        <div class="input-icon">
+                            <div></div>
+                        </div>
+                        <input id="dhm" class="input-area" title="code" />
+                    </div>
+                </div>
+                <p class="uid-tip">角色ID为游戏主界面左上角“个人信息”界面中数字ID</p>
+                <div class="button-row">
+                    <div id="iuputInfo" class="info">
+                        <p>角色名称: <span id="name"></span></p>
+                        <p>角色等级: <span id="title"></span></p>
+                    </div>
+                    <div class="submit"></div>
+                </div>
+                <div class="line"></div>
+                <div class="tips">
+                    <div class="tip">
+                        <div class="dart"></div>
+                        <p>登录游戏在邮箱中领取奖励，请注意在兑换码过期前尽快领取</p>
+                    </div>
+                    <div class="tip">
+                        <div class="dart"></div>
+                        <p>同一兑换码仅可使用一次，同一角色不可重复使用相同类型的兑换码</p>
+                    </div>
+                    <div class="tip">
+                        <div class="dart"></div>
+                        <p>若兑换时遇到问题，请联系客服QQ公众号: <span class="QQ">800180617</span></p>
+                    </div>
+                </div>
+                <div class="download-group">
+                    <div class="bar-code"></div>
+                    <div class="download-button">
+                        <a href="https://itunes.apple.com/cn/app/id1020071295?l=zh&ls=1&mt=8">
+                            <div class="ios"></div>
+                        </a>
+                        <a href="https://resource.ninjamustdie3.pandadastudio.com/NinjaMustDie3_Official.apk">
+                            <div class="android"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cover" style="display: none;"></div>
+    <div class="layer" style="display: none;">
+        <div class="cw">
+            <div class="tip-window">
+                <p id="tip-msg"></p>
+                <div class="tip-button">
+                    <div class="confirm"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="c1"></div>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
